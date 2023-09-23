@@ -1,0 +1,199 @@
+html, body {
+  background-color: rgb(218, 47, 17);
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  height: 100%;
+}
+
+#login {
+  width: 20vw;
+  height: 2em;
+  position: absolute;
+  top: 1em;
+  right: 2em;
+  background-color: black;
+  color: white;
+  font-size: 2em;
+}
+#leaderboard-btn {
+  width: 20vw;
+  height: 2em;
+  position: absolute;
+  top: 3.2em;
+  right: 2em;
+  background-color: black;
+  color: white;
+  font-size: 2em;
+}
+#claim-btn {
+  width: 20vw;
+  height: 2em;
+  position: absolute;
+  top: 5.4em;
+  right: 2em;
+  background-color: black;
+  color: white;
+  font-size: 2em;
+}
+#leaderboard {
+  display:none;
+  /* width: 30%; */
+  min-width: 10em;
+  margin-left: 10%;
+  margin-right: 5%;
+  font-size: 2em;
+  clear: both;
+}
+#leaderboard table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: sans-serif;
+}
+
+
+#leaderboard table tr:nth-child(2n+1) {
+  background-color: #000000aa;
+  color: white;
+}
+
+#leaderboard table td, table th {
+  /* border-right: 1px dashed #000000aa;
+  border-left: 1px dashed #00000055; */
+  text-align: right;
+  padding: 0.2em;
+}
+
+#leaderboard table td:nth-child(2) {
+  padding-left: 0.5em;
+}
+
+#popover {
+  position: fixed;
+  display: none;
+  top: 5em;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#popover img,
+#popover video {
+  height: 80vh;
+  border: 1em solid white;
+  border-radius: 1em;
+}
+
+#logo {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  text-align: center;
+  background-color: rgb(218, 47, 17);
+  border-left: 5px solid black;
+  border-right: 5px solid black;
+  border-bottom: 5px solid black;
+  height: 2.45em;
+  z-index: 2;
+  position: relative;
+}
+
+#small-logo {
+  z-index: 2;
+  width: 10vw;
+}
+
+#big-logo {
+  width: 40vw;
+}
+
+#content {
+  background-image: url(./bg-signup.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 5px solid black;
+  position: relative;
+  top: -4em;
+
+  min-height: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  /* z-index: 1; */
+  padding-top: 60px;
+  min-width: 100vh;
+}
+
+
+h1 {
+  padding-left: 1em;
+  border-bottom: 2px solid black;
+  width: 90vw;
+}
+
+.poster {
+  padding: 1em;
+  text-align: center;
+}
+.poster div {
+  box-shadow: 2px 2px 10px 1px #000000;
+}
+.poster img,
+.poster video {
+  width: 16vw;
+  min-width: 72px;
+  border: 3px solid #fff;
+  border-radius: 3px;
+
+  filter: grayscale(1);
+  cursor: pointer;
+  display: block;
+}
+
+.posters-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-flow: row dense;
+  grid-template-rows: 1;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+
+
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+.shine::before {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%);
+  content: "";
+  display: block;
+  height: 100%;
+  left: -95%;
+  position: absolute;
+  top: 0;
+  transform: skewX(-25deg);
+  width: 50%;
+  z-index: 2;
+}
+.shine:hover::before, .shine:focus::before {
+  -webkit-animation: shine 0.85s;
+          animation: shine 0.85s;
+}
+@-webkit-keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
