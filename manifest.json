@@ -1,5 +1,7 @@
 {
     "name": "RPCiege",
+    "start_url": "https://candela.network/pages/rpciege/",
+    "display": "minimal-ui",
     "icons": [
       {
         "src": "icons/r.webp",
