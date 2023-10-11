@@ -7,8 +7,8 @@
       {
         "src": "icons/r.webp",
         "type": "image/webp",
-        "sizes": "72x72 96x96 128x128 256x256",
-        "purpose": "maskable any"
+        "sizes": "256x256",
+        "purpose": "any"
       }
     ]
   }
