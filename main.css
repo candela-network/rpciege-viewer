@@ -1,10 +1,51 @@
 
 html, body {
   background-color: rgb(218, 47, 17);
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   height: 100%;
 }
+#main {
+  background-color: #fae2a2;
+}
 
+.info {
+  position: relative;
+  top: -1em;
+  left: 3em;
+  transition: all 700ms ease-in-out
+}
+.amount {
+
+  border-radius: 4px;
+  width: fit-content;
+  min-width: 2em;
+  text-align: right;
+  color: white;
+  background-color: black;
+  padding: 0.1em;
+  display: inline-block;
+  font-weight: bold;
+}
+.rarity {
+  
+  border-radius: 4px;
+  width: fit-content;
+  min-width: 2em;
+  text-align: right;
+  color: white;
+  background-color: black;
+  padding: 0.1em;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.show-hover {
+  opacity: 0;
+}
+.card-grid-item-card:hover .show-hover {
+  opacity: 1;
+}
+/*
 #login {
   width: 20vw;
   height: 2em;
@@ -34,6 +75,28 @@ html, body {
   background-color: black;
   color: white;
   font-size: 2em;
+}*/
+.nav {
+  max-width: 1000px;
+  width: 90%;
+  display: block;
+  margin: auto;
+  text-align: center;
+  /* border: 0.2em solid #da2f11; */
+  height: 2em;
+  /* vertical-align: middle; */
+  /* background-color: black; */
+  color: white;
+}
+.button-bar {
+  width: 30%;
+  height: 2em;
+  vertical-align: middle;
+  text-align: center;
+  margin: 0 auto;
+  color: white;
+  background-color: black;
+  box-shadow: 1px 1px 6px rgba(0,0,0,0.45);
 }
 #leaderboard {
   display:none;
@@ -84,6 +147,8 @@ html, body {
   height: 80vh;
   border: 1em solid black;
   border-radius: 1em;
+
+  background-color: black;
 }
 
 #logo {
@@ -111,21 +176,23 @@ html, body {
 }
 
 #content {
-  background-image: url(./bg-signup.jpg);
+  /* background-image: url(./bg-signup.jpg); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   border: 5px solid black;
   position: relative;
   top: -4em;
-
-  min-height: 95%;
-  margin-left: auto;
-  margin-right: auto;
+  /* min-height: 95%; */
+  /* margin-left: auto; */
+  /* margin-right: auto; */
   height: 100%;
   /* z-index: 1; */
   padding-top: 60px;
-  min-width: 100vh;
+  /* min-width: 100vh; */
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 

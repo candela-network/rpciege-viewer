@@ -73,23 +73,45 @@ for (let c of toml.CURRENCIES) {
 
 const simpleSignerUrl = "https://sign.plutodao.finance";
 
-let doc = document.getElementById("cards");
-let content = `<div class="posters-container">`;
+let doc = document.querySelector(".card-grid-inner");
+let content = ``;
 let i = 0;
 for (let asset in ASSETS) {
-  content += `<div class=" poster poster${(i%5 == 0) ? 5 : i%5}">
-                  <div id="${asset}-shine" style="width: fit-content;height: fit-content;">
-                    <img id="${asset}" src="${ASSETS[asset].image}" loading="lazy"/>
-                  </div>
-                    <video id="video${asset}" style="display:none;" preload="none" poster="${ASSETS[asset].image}">
-                        <source src="https://assets.rpciege.com/${ASSETS[asset].code}.mp4" autoplay="true" muted="muted" type="video/mp4" />
-                    </video>
-                </div>`;
+  if (ASSETS[asset].code.startsWith("FC")) {
+    continue;
+  }
+  content += `
+  <div class="card-grid-item ">
+    <div class="card-grid-item-card-faces" v-bind:class="{'flipped':flipped}">
+      <a class="card-grid-item-card">
+        <span class="card-grid-item-invisible-label" aria-hidden="true">Agatha of the Vile Cauldron</span>
+        <div class="card-grid-item-card-front">
+          <img class="card border-black "  loading="eager" id="${asset}" src="${ASSETS[asset].image}" />
+          <div class="info show-hover">
+            <div class="amount">0</div>
+            <div class="rarity">common</div>
+          </div>
+          <video id="video${asset}" style="display:none;" preload="none" poster="${ASSETS[asset].image}">
+            <source src="https://assets.rpciege.com/${ASSETS[asset].code}.mp4" autoplay="true" muted="muted" type="video/mp4" />
+          </video>
+        </div>
+      </a>
+    </div>
+  </div>
+  `
+  // content += `<div class=" poster poster${(i%5 == 0) ? 5 : i%5}">
+  //                 <div id="${asset}-shine" style="width: fit-content;height: fit-content;">
+  //                   <img id="${asset}" src="${ASSETS[asset].image}" loading="lazy"/>
+  //                 </div>
+  //                   <video id="video${asset}" style="display:none;" preload="none" poster="${ASSETS[asset].image}">
+  //                       <source src="https://assets.rpciege.com/${ASSETS[asset].code}.mp4" autoplay="true" muted="muted" type="video/mp4" />
+  //                   </video>
+  //               </div>`;
 
   i += 1;
 }
 
-content += `</div>`;
+content += ``;
 doc.innerHTML += content;
 
 var poped = false;
@@ -211,10 +233,15 @@ async function loadAccount() {
             let community = b.asset_code.endsWith("C");
             let rare = b.asset_code.startsWith("R") && !common ;
             console.log(idasset + " == " + b.asset_code)
-            document.getElementById(idasset).style.filter = "grayscale(0)";
-            if (rare) {
-              document.getElementById(idasset+"-shine").className = "shine";
+            if (document.getElementById(idasset)) {
+              let elem = document.getElementById(idasset);
+              elem.style.filter = "grayscale(0)";
+              elem.parentElement.querySelector(".amount").innerHTML = Number(b.balance) * 10000000;
+              if (rare) {
+                elem.parentElement.querySelector(".rarity").innerHTML = "rare";
+              }
             }
+            
           }
         }
       }

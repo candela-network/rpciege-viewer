@@ -7,27 +7,42 @@
     <title>Page Title for Row-Bear</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='card.css'>
     <script src='main.js' type="module"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stellar-sdk/10.1.0/stellar-sdk.min.js"
         integrity="sha512-EqNQsxKR6rZ5xKl29xXa+ez7xgtVSUpj9UDzZmTqoyF0wHbusLkrP8S7dOsKa9DmkoHbssoWUA4+n/0KYY1EAQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    
+    <link rel="manifest" href="manifest.json" />
+    <meta name="application-name" content="RPCiege">
+    <link rel="icon" sizes="16x16 32x32 48x48" href="icons/r.webpo">
+    <link rel="icon" sizes="512x512" href="icons/r.webp">
 </head>
 
 <body>
     <section id="main">
-        <div id="logo">
-
-            <img src="fca00c.svg" id="small-logo" />
-        </div>
+        
         <div id="content">
             <img src="siege-logo-on-box-with-stylings-distress.webp" id="big-logo" />
             <div id="popover"></div>
-            <button id="login">Log in</button>
-            <button id="leaderboard-btn">Leaderboard</button>
-            <button id="claim-btn">Claim</button>
+            
+            <div class="nav">
+                <button id="login" class="button-bar">Log in</button>
+                <button id="leaderboard-btn" class="button-bar">Leaderboard</button>
+                <button id="claim-btn" class="button-bar">Claim</button>
+            </div>
 
             <div id="cards">
             </div>
+
+            <!-- <div id="main" class="main" role="main"> -->
+                <div class="card-grid">
+                    <div class="card-grid-inner">
+    
+                    </div>
+                </div>
+            <!-- </div> -->
         </div>
     </section>
 </body>
