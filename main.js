@@ -82,14 +82,17 @@ for (let asset in ASSETS) {
   }
   content += `
   <div class="card-grid-item ">
-    <div class="card-grid-item-card-faces" v-bind:class="{'flipped':flipped}">
+    <div class="card-grid-item-card-faces" ">
       <a class="card-grid-item-card">
-        <span class="card-grid-item-invisible-label" aria-hidden="true">Agatha of the Vile Cauldron</span>
         <div class="card-grid-item-card-front">
           <img class="card border-black "  loading="eager" id="${asset}" src="${ASSETS[asset].image}" />
-          <div class="info show-hover">
+          <div class="info show-hover " id="common">
             <div class="amount">0</div>
             <div class="rarity">common</div>
+          </div>
+          <div class="info show-hover " id="rare">
+            <div class="amount">0</div>
+            <div class="rarity">rare</div>
           </div>
           <video id="video${asset}" style="display:none;" preload="none" poster="${ASSETS[asset].image}">
             <source src="https://assets.rpciege.com/${ASSETS[asset].code}.mp4" autoplay="true" muted="muted" type="video/mp4" />
@@ -99,14 +102,6 @@ for (let asset in ASSETS) {
     </div>
   </div>
   `
-  // content += `<div class=" poster poster${(i%5 == 0) ? 5 : i%5}">
-  //                 <div id="${asset}-shine" style="width: fit-content;height: fit-content;">
-  //                   <img id="${asset}" src="${ASSETS[asset].image}" loading="lazy"/>
-  //                 </div>
-  //                   <video id="video${asset}" style="display:none;" preload="none" poster="${ASSETS[asset].image}">
-  //                       <source src="https://assets.rpciege.com/${ASSETS[asset].code}.mp4" autoplay="true" muted="muted" type="video/mp4" />
-  //                   </video>
-  //               </div>`;
 
   i += 1;
 }
@@ -151,14 +146,14 @@ document.addEventListener("click", (ev) => {
     return;
   }
 
-  if (ev.target.id.startsWith("leaderboard")) {
-    window.open('https://rpciege.com/leaderboard', '_blank');
-    return;
-  }
-  if (ev.target.id.startsWith("claim")) {
-    window.open('https://rpciege.com/claim', '_blank');
-    return;
-  } 
+  // if (ev.target.id.startsWith("leaderboard")) {
+  //   window.open('https://rpciege.com/leaderboard', '_blank');
+  //   return;
+  // }
+  // if (ev.target.id.startsWith("claim")) {
+  //   window.open('https://rpciege.com/claim', '_blank');
+  //   return;
+  // } 
 });
 
 function openConnectWindow() {
@@ -215,9 +210,18 @@ async function handleMessage(e) {
 }
 
 async function loadAccount() {
+
   let publicKey = localStorage.getItem("publicKey");
 
+  let params = new URL(document.location).searchParams;
+  let urlId = params.get("id");
+  if (urlId) {
+    publicKey = urlId;
+  }
+
   if (StellarSdk.Keypair.fromPublicKey(publicKey)) {
+
+    document.getElementById("share-url").href = "?id=" + publicKey;
     console.log("The public key is", publicKey);
     document.getElementById("login").innerHTML =
       publicKey.substr(0, 4) + "..." + publicKey.substr(52);
@@ -236,10 +240,16 @@ async function loadAccount() {
             if (document.getElementById(idasset)) {
               let elem = document.getElementById(idasset);
               elem.style.filter = "grayscale(0)";
-              elem.parentElement.querySelector(".amount").innerHTML = Number(b.balance) * 10000000;
               if (rare) {
-                elem.parentElement.querySelector(".rarity").innerHTML = "rare";
+                elem.parentElement.querySelector("#rare .amount").innerHTML = Number(b.balance) * 10000000 ;
+                elem.parentElement.querySelector("#rare").style.opacity = 1;
+                // elem.parentElement.querySelector("#rare .rarity").innerHTML = "rare";
+              } else {
+                elem.parentElement.querySelector("#common .amount").innerHTML = Number(b.balance) * 10000000 ;
+                elem.parentElement.querySelector("#common").style.opacity = 1;
+
               }
+
             }
             
           }
