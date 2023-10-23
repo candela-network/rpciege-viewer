@@ -43,16 +43,16 @@ for (let c of toml.CURRENCIES) {
     let rare = !common ;
 
     // Temporary fix for wrong issuers
-    if (fortress) {
-      ASSETS["G" + c.code] = {
-        image: c.image,
-        code: c.code,
-        rare: rare,
-        common: common,
-      }
+    // if (fortress) {
+    //   ASSETS["G" + c.code] = {
+    //     image: c.image,
+    //     code: c.code,
+    //     rare: rare,
+    //     common: common,
+    //   }
 
-      continue;
-    }
+    //   continue;
+    // }
 
     if (!ASSETS[c.issuer]) {
       ASSETS[c.issuer] = {

@@ -42,6 +42,7 @@ img.card {
     overflow: hidden;
     text-align: center;
     filter: grayscale(1);
+    cursor: pointer;
 }
 
 
